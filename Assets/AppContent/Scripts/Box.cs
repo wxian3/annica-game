@@ -4,14 +4,14 @@ using System.Collections;
 public class Box : MonoBehaviour {
 	AudioSource coinSound;
 	public AudioClip coinClip;
-	public GameObject coinModel;
+	//public GameObject coinModel;
 	private Shader shader;
 	public Renderer rend;
 	bool boxHit = false;
 	// Use this for initialization
 	void Start () {
 		rend = GetComponent<Renderer> ();
-		coinModel.SetActive (false);
+		//coinModel.SetActive (false);
 		coinSound = GetComponent<AudioSource> ();
 		shader = Shader.Find ("02 - Default");
 	}

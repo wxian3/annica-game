@@ -31,9 +31,9 @@ public class PlayerMovement : MonoBehaviour, ITrackableEventHandler
 	public GameObject imageTarget;
 	private bool targetFound = false;
 	private TrackableBehaviour mTrackableBehaviour;
-	const float START_X = 0.472f;
-	const float START_Y = 0.38f;
-	const float START_Z = 0.884f;
+	const float START_X = -0.662f;
+	const float START_Y = 0.745f;
+	const float START_Z = 0.82f;
 	void Start ()
 	{
 		mTrackableBehaviour = imageTarget.GetComponent<TrackableBehaviour>();
