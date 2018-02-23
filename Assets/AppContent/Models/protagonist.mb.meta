@@ -3,7 +3,7 @@ guid: 223f133e116bb49b397209a1884f6d47
 timeCreated: 1477763972
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: joint1
     100002: joint10
@@ -63,35 +63,62 @@ ModelImporter:
     400054: transform5
     4300000: polySurface1
     7400000: run
+    7400002: run
     9500000: //RootNode
     11100000: //RootNode
     13700000: polySurface1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: 490d741429c6044c5afe5f6e7273de55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cloth
+    second: {fileID: 2100000, guid: 87b441de886fb4bf1a560f14e21a9f76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: 560d568a26f4a4bb08b4e823bf1ae611, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: eb8766b8e0c4e488f9d0f989f14e9790, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
-    animationWrapMode: 0
+    animationWrapMode: 2
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: run
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 20
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -111,64 +138,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: joint1
-        weight: 1
-      - path: joint1/joint2
-        weight: 1
-      - path: joint1/joint2/joint3
-        weight: 1
-      - path: joint1/joint2/joint3/joint4
-        weight: 1
-      - path: joint1/joint2/joint3/joint4/joint5
-        weight: 1
-      - path: joint1/joint2/joint6
-        weight: 1
-      - path: joint1/joint2/joint7
-        weight: 1
-      - path: joint1/joint2/joint7/joint8
-        weight: 1
-      - path: joint1/joint2/joint7/joint8/joint9
-        weight: 1
-      - path: joint1/joint2/joint7/joint8/joint9/joint10
-        weight: 1
-      - path: joint1/joint2/joint7/joint8/joint9/joint11
-        weight: 1
-      - path: joint1/joint2/joint12
-        weight: 1
-      - path: joint1/joint2/joint12/joint13
-        weight: 1
-      - path: joint1/joint2/joint12/joint13/joint14
-        weight: 1
-      - path: joint1/joint2/joint12/joint13/joint14/joint15
-        weight: 1
-      - path: joint1/joint2/joint12/joint13/joint14/joint16
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      - path: pPlane1
-        weight: 1
-      - path: pPlane1/transform1
-        weight: 1
-      - path: pSphere1
-        weight: 1
-      - path: pSphere1/transform2
-        weight: 1
-      - path: pSphere2
-        weight: 1
-      - path: pSphere2/polySurface1 1
-        weight: 1
-      - path: pSphere2/polySurface1 1/transform5
-        weight: 1
-      - path: pSphere2/polySurface2
-        weight: 1
-      - path: pSphere2/polySurface2/transform4
-        weight: 1
-      - path: pSphere2/transform3
-        weight: 1
-      maskType: 0
+      transformMask: []
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1
@@ -177,13 +148,18 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -193,9 +169,11 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -206,7 +184,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 1
   humanoidOversampling: 1
