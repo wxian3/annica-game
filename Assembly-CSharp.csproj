@@ -52,14 +52,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AppContent\Scripts\Box.cs" />
+     <Compile Include="Assets\AppContent\Scripts\bridge.cs" />
+     <Compile Include="Assets\AppContent\Scripts\bridge_control.cs" />
      <Compile Include="Assets\AppContent\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\AppContent\Scripts\game.cs" />
      <Compile Include="Assets\AppContent\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\AppContent\Scripts\PlayerMovementKey.cs" />
      <Compile Include="Assets\AppContent\Scripts\ThirdPersonCamera.cs" />
-     <Compile Include="Assets\bridge.cs" />
-     <Compile Include="Assets\bridge_control.cs" />
-     <Compile Include="Assets\EmptyClass.cs" />
-     <Compile Include="Assets\game.cs" />
      <None Include="Assets\StreamingAssets\QCAR\ARSuperMario.xml" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\AppContent\shaders\ShadowCatcher.shader" />
