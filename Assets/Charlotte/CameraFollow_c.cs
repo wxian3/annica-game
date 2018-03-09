@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow_c : MonoBehaviour {
 
 	Camera pcCamera;
 
