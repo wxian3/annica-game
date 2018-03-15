@@ -3,7 +3,7 @@ guid: 724d154a4a3c74261a12b47a40081076
 timeCreated: 1477720808
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: joint1
     100002: joint10
@@ -66,32 +66,44 @@ ModelImporter:
     9500000: //RootNode
     11100000: //RootNode
     13700000: polySurface1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 34ecbaf156f8d45abadb83923121ed7e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Head' not found\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: run
+      name: Take 001
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 15
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -110,94 +122,29 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.46116504
-        functionName: NewEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.56796116
-        functionName: run
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask:
-      - path: 
-        weight: 1
-      - path: joint1
-        weight: 1
-      - path: joint1/joint2
-        weight: 1
-      - path: joint1/joint2/joint3
-        weight: 1
-      - path: joint1/joint2/joint3/joint4
-        weight: 1
-      - path: joint1/joint2/joint3/joint4/joint5
-        weight: 1
-      - path: joint1/joint2/joint6
-        weight: 1
-      - path: joint1/joint2/joint7
-        weight: 1
-      - path: joint1/joint2/joint7/joint8
-        weight: 1
-      - path: joint1/joint2/joint7/joint8/joint9
-        weight: 1
-      - path: joint1/joint2/joint7/joint8/joint9/joint10
-        weight: 1
-      - path: joint1/joint2/joint7/joint8/joint9/joint11
-        weight: 1
-      - path: joint1/joint2/joint12
-        weight: 1
-      - path: joint1/joint2/joint12/joint13
-        weight: 1
-      - path: joint1/joint2/joint12/joint13/joint14
-        weight: 1
-      - path: joint1/joint2/joint12/joint13/joint14/joint15
-        weight: 1
-      - path: joint1/joint2/joint12/joint13/joint14/joint16
-        weight: 1
-      - path: polySurface1
-        weight: 1
-      - path: pPlane1
-        weight: 1
-      - path: pPlane1/transform1
-        weight: 1
-      - path: pSphere1
-        weight: 1
-      - path: pSphere1/transform2
-        weight: 1
-      - path: pSphere2
-        weight: 1
-      - path: pSphere2/polySurface1 1
-        weight: 1
-      - path: pSphere2/polySurface1 1/transform5
-        weight: 1
-      - path: pSphere2/polySurface2
-        weight: 1
-      - path: pSphere2/polySurface2/transform4
-        weight: 1
-      - path: pSphere2/transform3
-        weight: 1
-      maskType: 0
+      events: []
+      transformMask: []
+      maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -207,11 +154,249 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+    normalCalculationMode: 0
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
-    human: []
-    skeleton: []
+    serializedVersion: 2
+    human:
+    - boneName: joint1
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint7
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint12
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint8
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint13
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint9
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint14
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint3
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint4
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint10
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint15
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: joint5
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: protagonist(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface1
+      parentName: protagonist(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.0592701, y: 2.0592701, z: 2.0592701}
+    - name: pPlane1
+      parentName: protagonist(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform1
+      parentName: pPlane1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere1
+      parentName: protagonist(Clone)
+      position: {x: -0, y: 0.015782692, z: -0.0017837639}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.34315243, y: 0.3906871, z: 0.3906871}
+    - name: transform2
+      parentName: pSphere1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pSphere2
+      parentName: protagonist(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.8099978, y: 3.8099978, z: 3.8099978}
+    - name: polySurface1 1
+      parentName: pSphere2
+      position: {x: -0, y: 0.00014541337, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform5
+      parentName: polySurface1 1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: polySurface2
+      parentName: pSphere2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform4
+      parentName: polySurface2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform3
+      parentName: pSphere2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint1
+      parentName: protagonist(Clone)
+      position: {x: 0, y: 0.076749936, z: 0.031804085}
+      rotation: {x: -0.039834127, y: -0.7059839, z: 0.039834127, w: 0.7059839}
+      scale: {x: 0.99999976, y: 0.99999976, z: 1}
+    - name: joint2
+      parentName: joint1
+      position: {x: -0.032007232, y: 1.6653345e-18, z: -1.4214067e-17}
+      rotation: {x: -0.000000005587936, y: -0, z: -0.73721844, w: 0.67565453}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1}
+    - name: joint3
+      parentName: joint2
+      position: {x: -0.023410695, y: 1.990223e-18, z: 2.420763e-17}
+      rotation: {x: 0.0000000013116166, y: 0.0000000013251222, z: 0.012817442, w: -0.99991786}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: joint4
+      parentName: joint3
+      position: {x: -0.007200924, y: 1.466209e-17, z: 7.509224e-18}
+      rotation: {x: 0.99944615, y: -0.0332779, z: 0.000000014026644, w: 0.000000017855664}
+      scale: {x: 1.0000008, y: 1.0000008, z: 1.0000007}
+    - name: joint5
+      parentName: joint4
+      position: {x: -0.027063405, y: 3.469447e-17, z: -2.8751633e-17}
+      rotation: {x: 0.48308414, y: -0.5163621, z: 0.4830841, w: 0.5163621}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: joint6
+      parentName: joint2
+      position: {x: 0.017107835, y: 0.0006543343, z: -1.7457599e-17}
+      rotation: {x: -4.440892e-16, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: joint7
+      parentName: joint2
+      position: {x: 0.016608668, y: -0.00042586325, z: 0.00781445}
+      rotation: {x: -0.0023218095, y: 0.9999974, z: 0.000000024497385, w: 0.000000017398499}
+      scale: {x: 1.0000007, y: 1.0000004, z: 1.0000006}
+    - name: joint8
+      parentName: joint7
+      position: {x: -0.027657665, y: -8.027259e-16, z: 2.997602e-17}
+      rotation: {x: -0.00019807369, y: -0.0021918532, z: -0.07441514, w: 0.997225}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1}
+    - name: joint9
+      parentName: joint8
+      position: {x: -0.023481978, y: 9.436896e-18, z: -1.943612e-15}
+      rotation: {x: -0.0006239012, y: 0.0021105236, z: -0.2984561, w: 0.95442086}
+      scale: {x: 1, y: 0.9999998, z: 1}
+    - name: joint10
+      parentName: joint9
+      position: {x: -0.005852151, y: 4.440892e-18, z: -1.8695453e-15}
+      rotation: {x: 0.3708103, y: -0.9287087, z: -0.000000005033919, w: -0.0000000024258455}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+    - name: joint11
+      parentName: joint9
+      position: {x: 0.0009753586, y: -0.0068275104, z: 2.63916e-15}
+      rotation: {x: -0, y: -0, z: -6.3108865e-30, w: 1}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000005}
+    - name: joint12
+      parentName: joint2
+      position: {x: 0.01660865, y: -0.00042588994, z: -0.00781445}
+      rotation: {x: 0.9999974, y: 0.00232175, z: 0.000000016025322, w: -0.00000002575589}
+      scale: {x: 1.0000006, y: 1.000001, z: 1.000001}
+    - name: joint13
+      parentName: joint12
+      position: {x: 0.027657678, y: 0.000000021782073, z: 2.8865798e-17}
+      rotation: {x: -0.00019818344, y: -0.0021920663, z: -0.07441385, w: 0.997225}
+      scale: {x: 1.0000004, y: 1.0000007, z: 1.0000005}
+    - name: joint14
+      parentName: joint13
+      position: {x: 0.023481991, y: -0.000000045417316, z: 2.3314683e-17}
+      rotation: {x: -0.0006239395, y: 0.0021106617, z: -0.29845738, w: 0.9544205}
+      scale: {x: 1.0000002, y: 1.000001, z: 1.0000004}
+    - name: joint15
+      parentName: joint14
+      position: {x: 0.0058521563, y: -7.0710676e-10, z: 4.440892e-18}
+      rotation: {x: 0.37081027, y: -0.9287086, z: -0.00000007159781, w: 0.000000029012286}
+      scale: {x: 1.000001, y: 1.0000006, z: 1.0000007}
+    - name: joint16
+      parentName: joint14
+      position: {x: -0.0009753838, y: 0.0068275398, z: 6.661338e-18}
+      rotation: {x: -0, y: -0, z: -1.7678624e-15, w: 1}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -220,9 +405,12 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
