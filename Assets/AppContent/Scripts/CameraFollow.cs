@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour {
 	public float maxSpeed = 5f;        //max speed camera can move
 
 	private bool inAdjust;
+	private bool rinAdjust;
 	private Vector3 beginCharacterToMouse;
 	private Vector3 currentCharacterToMouse;
 	private Vector3 beginMousePosition;
@@ -33,6 +34,7 @@ public class CameraFollow : MonoBehaviour {
 
 	void Start() {
 		inAdjust = false;
+		rinAdjust = false;
 		offset = transform.position - target.position;
 	}
 
@@ -43,16 +45,33 @@ public class CameraFollow : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			inAdjust = true;
 
-			beginCharacterToMouse = transform.position - target.position;
-			beginMousePosition = Input.mousePosition;
+			if (rinAdjust != true) {
+				beginCharacterToMouse = transform.position - target.position;
+				beginMousePosition = Input.mousePosition;
+			}
 		}
 
 
 		if (Input.GetMouseButtonUp (0)) {
 			inAdjust = false;
 		}
+
+
+		if (Input.GetMouseButtonDown (1)) {
+			rinAdjust = true;
+
+			if (inAdjust != true) {
+				beginCharacterToMouse = transform.position - target.position;
+				beginMousePosition = Input.mousePosition;
+			}
+		}
+
+
+		if (Input.GetMouseButtonUp (1)) {
+			rinAdjust = false;
+		}
 			
-		if (inAdjust) {
+		if (inAdjust || rinAdjust) {
 
 			float distance = Mathf.Pow (beginCharacterToMouse.x, 2) + Mathf.Pow (beginCharacterToMouse.y, 2) + Mathf.Pow (beginCharacterToMouse.z, 2);
 			distance = Mathf.Sqrt (distance);
@@ -97,7 +116,7 @@ public class CameraFollow : MonoBehaviour {
 		if (Input.GetAxis("Mouse ScrollWheel") <0)  
 		{  
 			if(pcCamera.fieldOfView<=100)  
-				pcCamera.fieldOfView +=2;  
+				pcCamera.fieldOfView +=0.5f;  
 			if(pcCamera.orthographicSize<=20)  
 				pcCamera.orthographicSize +=0.5F;  
 		}  
@@ -105,7 +124,7 @@ public class CameraFollow : MonoBehaviour {
 		if (Input.GetAxis("Mouse ScrollWheel") > 0)  
 		{  
 			if(pcCamera.fieldOfView>2)  
-				pcCamera.fieldOfView-=2;  
+				pcCamera.fieldOfView-=0.5f;  
 			if(pcCamera.orthographicSize>=1)  
 				pcCamera.orthographicSize-=0.5F;  
 		}  
