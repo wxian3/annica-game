@@ -37,6 +37,6 @@ public class Box : MonoBehaviour {
 			Component halo = GetComponent("Halo"); 
 			halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
 		}
-		GameObject.Find ("Game").GetComponent<game>().Absorb ();
+		//GameObject.Find ("Game").GetComponent<game>().Absorb ();
 	}
 }
