@@ -25,13 +25,14 @@ public class Box : MonoBehaviour {
 	void OnCollisionEnter(Collision info) {
 		if (info.gameObject.name == "protagonist" && boxHit == false) {
 			Debug.Log ("box is hit");
-			//coinSound.clip = coinClip;
-			//coinSound.Play ();
-			//coinModel.SetActive (true);
-			//Destroy (coinModel, 1.5f);
+            //coinSound.clip = coinClip;
+            //coinSound.Play ();
+            //coinModel.SetActive (true);
+            //Destroy (coinModel, 1.5f);
 
-			Color blackColor = new Color (0, 0, 0, 1.0f);
-			gameObject.GetComponent<Renderer> ().material.color = blackColor;
+            //Color blackColor = new Color (0, 0, 0, 1.0f);
+            //gameObject.GetComponent<Renderer> ().material.color = blackColor;
+            Destroy(gameObject.GetComponent<Renderer>());
 			boxHit = true;
 			Component halo = GetComponent("Halo"); 
 			halo.GetType().GetProperty("enabled").SetValue(halo, false, null);

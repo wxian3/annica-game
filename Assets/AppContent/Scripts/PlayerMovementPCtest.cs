@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
@@ -115,8 +115,8 @@ public class PlayerMovementPCtest : MonoBehaviour
 //		Debug.Log(v);
 		movement.Set (h2, 0f, v2);
 		movement = movement.normalized * speed * Time.deltaTime;
-		playerRigidbody.MovePosition (transform.position + movement);
-
+		//playerRigidbody.MovePosition (transform.position + movement);
+		transform.position += movement;
 
 //		if (h != 0f || v != 0f)
 //		anim.SetBool ("isWalking", true);
