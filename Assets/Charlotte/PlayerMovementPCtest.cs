@@ -113,10 +113,11 @@ public class PlayerMovementPCtest : MonoBehaviour
 		float h2 = - v * Mathf.Sin (faceDirection) + h * Mathf.Cos (faceDirection);
 		float v2 = v * Mathf.Cos (faceDirection) + h * Mathf.Sin (faceDirection);
 //		Debug.Log(v);
+		//Debug.Log("h:" + h2 + " v:" + v2);
 		movement.Set (h2, 0f, v2);
 		movement = movement.normalized * speed * Time.deltaTime;
-		playerRigidbody.MovePosition (transform.position + movement);
-
+		//playerRigidbody.MovePosition (transform.position + movement);
+		transform.position += movement;
 
 //		if (h != 0f || v != 0f)
 //		anim.SetBool ("isWalking", true);
