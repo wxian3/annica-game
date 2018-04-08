@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class WolfAI : MonoBehaviour {
 	public GameObject[] waypoints;
-	private float minDist = 0.1f;
+	public float minDist = 0.4f;
 
 	private NavMeshAgent agent;
 	private Animator anim;
@@ -16,6 +16,7 @@ public class WolfAI : MonoBehaviour {
 	private int currWaypoint = -1;
 	public float timmer = 0.0f;
 	private float sitTime = 7.0f;
+	public float idleTime = 13.0f;
 
 	public enum AIState {
 		Patrol,
@@ -60,7 +61,7 @@ public class WolfAI : MonoBehaviour {
 			}
 			break;
 		case AIState.Idle:
-			if (timmer >= sitTime) {
+			if (timmer >= idleTime) {
 				anim.SetTrigger ("start");
 				aiState = AIState.Patrol;
 				setNextWaypoint ();
