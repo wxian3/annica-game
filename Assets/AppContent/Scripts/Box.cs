@@ -23,7 +23,7 @@ public class Box : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision info) {
-		if (info.gameObject.name == "protagonist" && boxHit == false) {
+		if (info.gameObject.name == "annica" && boxHit == false) {
 			Debug.Log ("box is hit");
             //coinSound.clip = coinClip;
             //coinSound.Play ();
