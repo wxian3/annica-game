@@ -21,6 +21,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 	private Vector3 currentMousePosition;
 	private Vector3 offset;
 
+	public AudioSource jumpSound;
 	//Animator anim;
 	//int floorMask;
 	//float camRayLength = 100f;
@@ -100,6 +101,8 @@ public class PlayerMovementPCtest : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			//Debug.Log ("get space down");
 			playerRigidbody.AddForce (new Vector3 (0f, 300f, 0f));
+			jumpSound.Play ();
+
 		}
 			
 //		anim.SetFloat ("Speed", Mathf.Abs(h + v));
