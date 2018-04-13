@@ -13,17 +13,20 @@ public class Box : MonoBehaviour {
 		rend = GetComponent<Renderer> ();
 		//coinModel.SetActive (false);
 		coinSound = GetComponent<AudioSource> ();
+		if (coinSound != null) {
+			//Debug.Log ("get diamond sound");
+		}
 		shader = Shader.Find ("02 - Default");
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		transform.Rotate (new Vector3 (15, 0, 45) * Time.deltaTime);
 	}
 
 	void OnCollisionEnter(Collision info) {
 		if (info.gameObject.name == "annica" && boxHit == false) {
-			Debug.Log ("box is hit");
+			//Debug.Log ("box is hit");
 			//coinSound.clip = coinClip;
 			//coinSound.Play ();
 			//coinModel.SetActive (true);
@@ -31,11 +34,15 @@ public class Box : MonoBehaviour {
 
 			//Color blackColor = new Color (0, 0, 0, 1.0f);
 			//gameObject.GetComponent<Renderer> ().material.color = blackColor;
-			Destroy(gameObject.GetComponent<Renderer>());
+
 			GetComponent<AudioSource>().Play();
+			//Destroy(this.gameObject);
 			boxHit = true;
 			Component halo = GetComponent("Halo"); 
 			halo.GetType().GetProperty("enabled").SetValue(halo, false, null);
+			GetComponent<Renderer>().enabled = false;
+			GetComponent<Collider>().enabled = false;
+
 		}
 		//GameObject.Find ("Game").GetComponent<game>().Absorb ();
 	}

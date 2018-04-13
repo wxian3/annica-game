@@ -34,13 +34,16 @@ public class PlayerMovementPCtest : MonoBehaviour
 	}
 
 	void Start() {
-		inAdjust = false;
+		// inAdjust = false;
 		mouseMove = false;
+		inAdjust = true;
+		beginCharacterToMouse = pcCamera.position - transform.position;
+		beginMousePosition = Input.mousePosition;
 		//isGrounded = false;
 		offset = pcCamera.position - transform.position;
 	}
 		
-	void LateUpdate() {
+	void FixedUpdate() {
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
@@ -49,15 +52,15 @@ public class PlayerMovementPCtest : MonoBehaviour
 		anim.SetFloat ("Speed", Mathf.Abs(h + v));
 
 
-		if (Input.GetMouseButtonDown (1)) {
-			inAdjust = true;
-			beginCharacterToMouse = pcCamera.position - transform.position;
-			beginMousePosition = Input.mousePosition;
-		}
+		// if (Input.GetMouseButtonDown (1)) {
+		// 	inAdjust = true;
+		// 	beginCharacterToMouse = pcCamera.position - transform.position;
+		// 	beginMousePosition = Input.mousePosition;
+		// }
 			
-		if (Input.GetMouseButtonUp (1)) {
-			inAdjust = false;
-		}
+		// if (Input.GetMouseButtonUp (1)) {
+		// 	inAdjust = false;
+		// }
 
 		if (Input.GetMouseButtonDown (0)) {
 			mouseMove = true;
@@ -74,7 +77,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			distance = Mathf.Sqrt (distance);
 
 			currentMousePosition = Input.mousePosition;
-			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.01f;
+			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.04f;
 
 			Vector3 tempCtoM;
 			tempCtoM.x = beginCharacterToMouse.x * Mathf.Cos (horizonShift) - beginCharacterToMouse.z * Mathf.Sin(horizonShift);
@@ -120,11 +123,29 @@ public class PlayerMovementPCtest : MonoBehaviour
 
 		float h2 = - v * Mathf.Sin (faceDirection) + h * Mathf.Cos (faceDirection);
 		float v2 = v * Mathf.Cos (faceDirection) + h * Mathf.Sin (faceDirection);
+
+		float h3 = 0f;
+		float v3 = 0f;
+		if (h > 0f) {
+			h3 = this.transform.forward.z;
+		}
+		if (v > 0f) {
+			v3 = this.transform.forward.x;
+		}
+
 //		Debug.Log(v);
 		movement.Set (h2, 0f, v2);
+		Vector3 movement2 = new Vector3 (0f, 0f, 0f);
+		Vector3 zeros = new Vector3 (0f, 0f, 0f);
+		movement2.Set(h3, 0f, v3);
+		//movement.Set(-this.transform.forward.x, 0f, -this.transform.forward.z);
+//		if (movement != zeros) {
+//			Debug.Log ("movement:" + movement.normalized);
+//			Debug.Log ("forward:" + movement2.normalized);
+//		}
 		movement = movement.normalized * speed * Time.deltaTime;
-		playerRigidbody.MovePosition (transform.position + movement);
-		//transform.position += movement;
+		//playerRigidbody.MovePosition (transform.position + movement);
+		transform.position += movement;
 
 //		if (h != 0f || v != 0f)
 //		anim.SetBool ("isWalking", true);

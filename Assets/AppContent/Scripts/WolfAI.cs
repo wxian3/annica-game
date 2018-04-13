@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
@@ -17,6 +18,9 @@ public class WolfAI : MonoBehaviour {
 	public float timmer = 0.0f;
 	private float sitTime = 7.0f;
 	public float idleTime = 13.0f;
+
+	public Image gameOverImage;
+    bool death = false;
 
 	public enum AIState {
 		Patrol,
@@ -44,6 +48,12 @@ public class WolfAI : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (death) {
+        	System.Threading.Thread.Sleep(500); 
+            gameOverImage.gameObject.SetActive(true);
+        }
+
 		switch (aiState) {
 		case AIState.Patrol:
 			if (agent.remainingDistance < minDist) {
@@ -87,6 +97,15 @@ public class WolfAI : MonoBehaviour {
 			Debug.Log ("No waypoints found");
 		else {
 			agent.SetDestination (waypoints [currWaypoint].transform.position);
+		}
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		if (collision.gameObject.name == "annica" && !death) {
+			//Destroy(collision.gameObject);
+			//GetComponent<AudioSource>().Play();
+			death = true;
+			Debug.Log("die of meeting wolf.");
 		}
 	}
 }

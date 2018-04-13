@@ -33,43 +33,46 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 	void Start() {
-		inAdjust = false;
-		rinAdjust = false;
+		//inAdjust = false;
+		//rinAdjust = false;
+		inAdjust = true;
+		beginCharacterToMouse = transform.position - target.position;
+		beginMousePosition = Input.mousePosition;
 		offset = transform.position - target.position;
 	}
 
-	void LateUpdate() {
+	void FixedUpdate() {
 
 		Vector3 targetCamPos = offset + target.position;
 
-		if (Input.GetMouseButtonDown (0)) {
-			inAdjust = true;
+		// if (Input.GetMouseButtonDown (0)) {
+		// 	inAdjust = true;
 
-			if (rinAdjust != true) {
-				beginCharacterToMouse = transform.position - target.position;
-				beginMousePosition = Input.mousePosition;
-			}
-		}
-
-
-		if (Input.GetMouseButtonUp (0)) {
-			inAdjust = false;
-		}
+		// 	if (rinAdjust != true) {
+		// 		beginCharacterToMouse = transform.position - target.position;
+		// 		beginMousePosition = Input.mousePosition;
+		// 	}
+		// }
 
 
-		if (Input.GetMouseButtonDown (1)) {
-			rinAdjust = true;
-
-			if (inAdjust != true) {
-				beginCharacterToMouse = transform.position - target.position;
-				beginMousePosition = Input.mousePosition;
-			}
-		}
+		// if (Input.GetMouseButtonUp (0)) {
+		// 	inAdjust = false;
+		// }
 
 
-		if (Input.GetMouseButtonUp (1)) {
-			rinAdjust = false;
-		}
+		// if (Input.GetMouseButtonDown (1)) {
+		// 	rinAdjust = true;
+
+		// 	if (inAdjust != true) {
+		// 		beginCharacterToMouse = transform.position - target.position;
+		// 		beginMousePosition = Input.mousePosition;
+		// 	}
+		// }
+
+
+		// if (Input.GetMouseButtonUp (1)) {
+		// 	rinAdjust = false;
+		// }
 			
 		if (inAdjust || rinAdjust) {
 
@@ -77,7 +80,7 @@ public class CameraFollow : MonoBehaviour {
 			distance = Mathf.Sqrt (distance);
 
 			currentMousePosition = Input.mousePosition;
-			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.01f;
+			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.04f;
 
 			Vector3 tempCtoM;
 			tempCtoM.x = beginCharacterToMouse.x * Mathf.Cos (horizonShift) - beginCharacterToMouse.z * Mathf.Sin(horizonShift);
@@ -116,17 +119,17 @@ public class CameraFollow : MonoBehaviour {
 		if (Input.GetAxis("Mouse ScrollWheel") <0)  
 		{  
 			if(pcCamera.fieldOfView<=100)  
-				pcCamera.fieldOfView +=0.5f;  
+				pcCamera.fieldOfView +=2f;  
 			if(pcCamera.orthographicSize<=20)  
-				pcCamera.orthographicSize +=0.5F;  
+				pcCamera.orthographicSize +=2F;  
 		}  
 		//Zoom in  
 		if (Input.GetAxis("Mouse ScrollWheel") > 0)  
 		{  
 			if(pcCamera.fieldOfView>2)  
-				pcCamera.fieldOfView-=0.5f;  
+				pcCamera.fieldOfView-=2f;  
 			if(pcCamera.orthographicSize>=1)  
-				pcCamera.orthographicSize-=0.5F;  
+				pcCamera.orthographicSize-=2F;  
 		}  
 
 
