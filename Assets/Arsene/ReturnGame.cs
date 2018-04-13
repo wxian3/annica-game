@@ -6,7 +6,7 @@ public class ReturnGame : MonoBehaviour {
 
 
 	public void ReturnToMain() {
-		UnityEngine.SceneManagement.SceneManager.LoadScene ("ui");
+		UnityEngine.SceneManagement.SceneManager.LoadScene ("StartScene");
 	}
 		
 

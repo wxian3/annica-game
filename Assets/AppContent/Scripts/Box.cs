@@ -19,7 +19,6 @@ public class Box : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Rotate (new Vector3 (15, 0, 45) * Time.deltaTime);
-
 	}
 
 	void OnCollisionEnter(Collision info) {
