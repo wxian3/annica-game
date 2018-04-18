@@ -7,6 +7,7 @@ public class DiamondCollector : MonoBehaviour {
 
     public Image winningImage;
     int diamondCount = 0;
+	public Bridge bridge;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,7 @@ public class DiamondCollector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (diamondCount == 5) {
+        if (diamondCount == 6) {
         	//System.Threading.Thread.Sleep(1000); 
             winningImage.gameObject.SetActive(true);
         }
@@ -25,6 +26,10 @@ public class DiamondCollector : MonoBehaviour {
 	{
         if (collision.gameObject.tag == "diamond") {
             diamondCount++;
+			if (collision.gameObject.name == "Cube") {
+				bridge = GameObject.Find ("bridge").GetComponent <Bridge> ();
+				bridge.Rotate ();
+			}
         }
 	}
 }
