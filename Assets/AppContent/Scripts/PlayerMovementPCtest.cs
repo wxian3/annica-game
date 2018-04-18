@@ -13,6 +13,9 @@ public class PlayerMovementPCtest : MonoBehaviour
 	//public bool closeToJumpableGround;
 
 	public Transform pcCamera;
+	public bool isGrounded;
+//	public float jumpableGroundNormalMaxAngle = 45f;
+//	public bool closeToJumpableGround;
 	private bool inAdjust;
 	private bool mouseMove;
 	private Vector3 beginCharacterToMouse;
@@ -20,6 +23,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 	private Vector3 beginMousePosition;
 	private Vector3 currentMousePosition;
 	private Vector3 offset;
+
 
 	public AudioSource jumpSound;
 	//Animator anim;
@@ -39,7 +43,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 		inAdjust = true;
 		beginCharacterToMouse = pcCamera.position - transform.position;
 		beginMousePosition = Input.mousePosition;
-		//isGrounded = false;
+		isGrounded = true;
 		offset = pcCamera.position - transform.position;
 	}
 		
@@ -101,10 +105,12 @@ public class PlayerMovementPCtest : MonoBehaviour
 //		if (CharacterCommon.CheckGroundNear(this.transform.position, jumpableGroundNormalMaxAngle, 0f, 0f, out closeToJumpableGround))
 //			isGrounded = true;
 //
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
 			//Debug.Log ("get space down");
-			playerRigidbody.AddForce (new Vector3 (0f, 300f, 0f));
+			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
 			jumpSound.Play ();
+			isGrounded = false;
+			Debug.Log ("jump");
 
 		}
 			
@@ -152,6 +158,24 @@ public class PlayerMovementPCtest : MonoBehaviour
 //		else
 //			anim.SetBool ("isWalking", false);
 	}
+
+	void OnTriggerEnter(Collider other){
+		Debug.Log ("enter");
+		if (other.gameObject.layer == 11)
+		{
+			isGrounded = true;
+			Debug.Log ("is Grounded");
+		}
+	}
+
+//	void OnTriggerExit(Collider other)
+//	{
+//		Debug.Log ("exit");
+//		if (other.gameObject.layer == 11)
+//		{
+//			isGrounded = false;
+//		}
+//	}
 
 //	void Turning() {
 //		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
