@@ -122,41 +122,25 @@ public class PlayerMovementPCtest : MonoBehaviour
 
 	void Move (float h, float v) {
 
-		float faceDirection = Mathf.Acos(transform.rotation.y) * 2f;
-//		Debug.Log ("cos theta" + Mathf.Cos(faceDirection));
-//		Debug.Log ("theta" + faceDirection);
-//		Debug.Log ("sin theta" + Mathf.Sin (faceDirection));
-
-		float h2 = - v * Mathf.Sin (faceDirection) + h * Mathf.Cos (faceDirection);
-		float v2 = v * Mathf.Cos (faceDirection) + h * Mathf.Sin (faceDirection);
-
-		float h3 = 0f;
-		float v3 = 0f;
-		if (h > 0f) {
-			h3 = this.transform.forward.z;
-		}
-		if (v > 0f) {
-			v3 = this.transform.forward.x;
+		if (h != 0f || v != 0f) {
+			this.transform.Translate (-Vector3.forward * Time.deltaTime * speed);
 		}
 
-//		Debug.Log(v);
-		movement.Set (h2, 0f, v2);
-		Vector3 movement2 = new Vector3 (0f, 0f, 0f);
-		Vector3 zeros = new Vector3 (0f, 0f, 0f);
-		movement2.Set(h3, 0f, v3);
-		//movement.Set(-this.transform.forward.x, 0f, -this.transform.forward.z);
-//		if (movement != zeros) {
-//			Debug.Log ("movement:" + movement.normalized);
-//			Debug.Log ("forward:" + movement2.normalized);
-//		}
-		movement = movement.normalized * speed * Time.deltaTime;
-		//playerRigidbody.MovePosition (transform.position + movement);
-		transform.position += movement;
+//		float faceDirection = Mathf.Acos(transform.rotation.y) * 2f;
+//
+//		float h2 = - v * Mathf.Sin (faceDirection) + h * Mathf.Cos (faceDirection);
+//		float v2 = v * Mathf.Cos (faceDirection) + h * Mathf.Sin (faceDirection);
+//
+//		movement.Set (h2, 0f, v2);
+//		movement = movement.normalized * speed * Time.deltaTime;
+//		//playerRigidbody.MovePosition (transform.position + movement);
+//		transform.position += movement;
 
-//		if (h != 0f || v != 0f)
-//		anim.SetBool ("isWalking", true);
-//		else
+//		if (h != 0f || v != 0f) {
+//			anim.SetBool ("isWalking", true);
+//		} else {
 //			anim.SetBool ("isWalking", false);
+//		}
 	}
 
 	void OnTriggerEnter(Collider other){
