@@ -23,6 +23,10 @@ public class PlayerMovementPCtest : MonoBehaviour
 	private Vector3 beginMousePosition;
 	private Vector3 currentMousePosition;
 	private Vector3 offset;
+	private bool W;
+	private bool S;
+	private bool A;
+	private bool D;
 
 
 	public AudioSource jumpSound;
@@ -45,6 +49,10 @@ public class PlayerMovementPCtest : MonoBehaviour
 		beginMousePosition = Input.mousePosition;
 		isGrounded = true;
 		offset = pcCamera.position - transform.position;
+		W = false;
+		S = false;
+		A = false;
+		D = false;
 	}
 		
 	void FixedUpdate() {
@@ -52,6 +60,34 @@ public class PlayerMovementPCtest : MonoBehaviour
 		float v = Input.GetAxisRaw ("Vertical");
 
 		Move (h, v);
+
+		if (Input.GetKeyDown (KeyCode.W)) {
+			W = true;
+		}
+		if (Input.GetKeyUp (KeyCode.W)) {
+			W = false;
+		}
+
+		if (Input.GetKeyDown (KeyCode.S)) {
+			S = true;
+		}
+		if (Input.GetKeyUp (KeyCode.S)) {
+			S = false;
+		}
+
+		if (Input.GetKeyDown (KeyCode.A)) {
+			A = true;
+		}
+		if (Input.GetKeyUp (KeyCode.A)) {
+			A = false;
+		}
+
+		if (Input.GetKeyDown (KeyCode.D)) {
+			D = true;
+		}
+		if (Input.GetKeyUp (KeyCode.D)) {
+			D = false;
+		}
 
 		anim.SetFloat ("Speed", Mathf.Abs(h + v));
 
@@ -122,9 +158,25 @@ public class PlayerMovementPCtest : MonoBehaviour
 
 	void Move (float h, float v) {
 
-		if (h != 0f || v != 0f) {
+		if (W) {
 			this.transform.Translate (-Vector3.forward * Time.deltaTime * speed);
+		} 
+
+		if (A) {
+			this.transform.Translate (-Vector3.left * Time.deltaTime * speed);
 		}
+
+		if (S) {
+			this.transform.Translate (-Vector3.back * Time.deltaTime * speed);
+		}
+
+		if (D) {
+			this.transform.Translate (-Vector3.right * Time.deltaTime * speed);
+		}
+
+//		if (h != 0f || v != 0f) {
+//			this.transform.Translate (-Vector3.forward * Time.deltaTime * speed);
+//		}
 
 //		float faceDirection = Mathf.Acos(transform.rotation.y) * 2f;
 //
