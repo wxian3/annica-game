@@ -54,13 +54,8 @@ public class PlayerMovementPCtest : MonoBehaviour
 		A = false;
 		D = false;
 	}
-		
-	void FixedUpdate() {
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
 
-		Move (h, v);
-
+	void Update(){
 		if (Input.GetKeyDown (KeyCode.W)) {
 			W = true;
 		}
@@ -89,6 +84,29 @@ public class PlayerMovementPCtest : MonoBehaviour
 			D = false;
 		}
 
+		if (Input.GetMouseButtonDown (0)) {
+			mouseMove = true;
+		}
+
+		if (Input.GetMouseButtonUp (0)) {
+			mouseMove = false;
+		}
+
+		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
+			//Debug.Log ("get space down");
+			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
+			jumpSound.Play ();
+			isGrounded = false;
+			Debug.Log ("jump");
+		}
+	}
+		
+	void FixedUpdate() {
+		float h = Input.GetAxisRaw ("Horizontal");
+		float v = Input.GetAxisRaw ("Vertical");
+
+		Move (h, v);
+
 		anim.SetFloat ("Speed", Mathf.Abs(h + v));
 
 
@@ -101,15 +119,6 @@ public class PlayerMovementPCtest : MonoBehaviour
 		// if (Input.GetMouseButtonUp (1)) {
 		// 	inAdjust = false;
 		// }
-
-		if (Input.GetMouseButtonDown (0)) {
-			mouseMove = true;
-		}
-
-		if (Input.GetMouseButtonUp (0)) {
-			mouseMove = false;
-		}
-
 
 		if (inAdjust) {
 
@@ -137,18 +146,6 @@ public class PlayerMovementPCtest : MonoBehaviour
 			}
 
 		}
-
-//		if (CharacterCommon.CheckGroundNear(this.transform.position, jumpableGroundNormalMaxAngle, 0f, 0f, out closeToJumpableGround))
-//			isGrounded = true;
-//
-		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
-			//Debug.Log ("get space down");
-			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
-			jumpSound.Play ();
-			isGrounded = false;
-			Debug.Log ("jump");
-
-		}
 			
 //		anim.SetFloat ("Speed", Mathf.Abs(h + v));
 //		anim.SetBool ("isWalking", true);
@@ -158,7 +155,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 
 	void Move (float h, float v) {
 
-		if (W) {
+		if (W || mouseMove) {
 			this.transform.Translate (-Vector3.forward * Time.deltaTime * speed);
 		} 
 
