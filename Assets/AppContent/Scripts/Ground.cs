@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Ground : MonoBehaviour {
     public Image gameOverImage;
+	public TearManager tear_manager;
     bool death = false;
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,10 @@ public class Ground : MonoBehaviour {
 			//GetComponent<AudioSource>().Play();
 			Debug.Log("die of falling down");
 			death = true;
+		}
+		if (collision.gameObject.name == "Mask's tear(Clone)") {
+			tear_manager.less_tears ();
+			Destroy (collision.gameObject);
 		}
 	}
 }
