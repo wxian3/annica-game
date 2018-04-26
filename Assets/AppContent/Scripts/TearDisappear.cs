@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TearDisappear : MonoBehaviour {
 
-	// Use this for initialization
+	public TearManager tear_manager;
+
 	void Start () {
-		
+		//tear_manager.more_tears ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		
 	}
@@ -17,6 +17,7 @@ public class TearDisappear : MonoBehaviour {
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.layer == 11) {
+			//tear_manager.less_tears ();
 			Destroy (this.gameObject);
 		}
 	}

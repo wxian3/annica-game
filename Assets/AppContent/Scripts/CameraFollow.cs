@@ -80,7 +80,7 @@ public class CameraFollow : MonoBehaviour {
 			distance = Mathf.Sqrt (distance);
 
 			currentMousePosition = Input.mousePosition;
-			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.04f;
+			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.01f;
 
 			Vector3 tempCtoM;
 			tempCtoM.x = beginCharacterToMouse.x * Mathf.Cos (horizonShift) - beginCharacterToMouse.z * Mathf.Sin(horizonShift);
@@ -118,7 +118,7 @@ public class CameraFollow : MonoBehaviour {
 		//Zoom out  
 		if (Input.GetAxis("Mouse ScrollWheel") <0)  
 		{  
-			if(pcCamera.fieldOfView<=100)  
+			if(pcCamera.fieldOfView<=150)  
 				pcCamera.fieldOfView +=2f;  
 			if(pcCamera.orthographicSize<=20)  
 				pcCamera.orthographicSize +=2F;  

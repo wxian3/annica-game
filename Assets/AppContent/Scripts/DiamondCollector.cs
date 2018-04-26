@@ -16,7 +16,7 @@ public class DiamondCollector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (diamondCount == 6) {
+        if (diamondCount == 7) {
         	//System.Threading.Thread.Sleep(1000); 
             winningImage.gameObject.SetActive(true);
         }

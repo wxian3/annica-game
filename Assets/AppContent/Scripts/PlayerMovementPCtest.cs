@@ -97,7 +97,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
 			jumpSound.Play ();
 			isGrounded = false;
-			Debug.Log ("jump");
+			//Debug.Log ("jump");
 		}
 	}
 		
@@ -126,7 +126,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			distance = Mathf.Sqrt (distance);
 
 			currentMousePosition = Input.mousePosition;
-			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.04f;
+			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.01f;
 
 			Vector3 tempCtoM;
 			tempCtoM.x = beginCharacterToMouse.x * Mathf.Cos (horizonShift) - beginCharacterToMouse.z * Mathf.Sin(horizonShift);
@@ -193,22 +193,13 @@ public class PlayerMovementPCtest : MonoBehaviour
 	}
 
 	void OnTriggerEnter(Collider other){
-		Debug.Log ("enter");
+		//Debug.Log ("enter");
 		if (other.gameObject.layer == 11)
 		{
 			isGrounded = true;
-			Debug.Log ("is Grounded");
+			//Debug.Log ("is Grounded");
 		}
 	}
-
-//	void OnTriggerExit(Collider other)
-//	{
-//		Debug.Log ("exit");
-//		if (other.gameObject.layer == 11)
-//		{
-//			isGrounded = false;
-//		}
-//	}
 
 //	void Turning() {
 //		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
