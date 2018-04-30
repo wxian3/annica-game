@@ -4,18 +4,18 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerMovementPCtest : MonoBehaviour
 {
-	public float speed = 0.1f;
-	Vector3 movement;
-	Rigidbody playerRigidbody;
-	Animator anim;
-	//public bool isGrounded;
-	///public float jumpableGroundNormalMaxAngle = 45f;
-	//public bool closeToJumpableGround;
+	public float speed = 4f;
+	public float sensitivity = 0.007f;
 
 	public Transform pcCamera;
 	public bool isGrounded;
-//	public float jumpableGroundNormalMaxAngle = 45f;
-//	public bool closeToJumpableGround;
+	Vector3 movement;
+	Rigidbody playerRigidbody;
+	Animator anim;
+	// public float jumpableGroundNormalMaxAngle = 45f;
+	// public bool closeToJumpableGround;
+	//	public float jumpableGroundNormalMaxAngle = 45f;
+	//	public bool closeToJumpableGround;
 	private bool inAdjust;
 	private bool mouseMove;
 	private Vector3 beginCharacterToMouse;
@@ -56,31 +56,31 @@ public class PlayerMovementPCtest : MonoBehaviour
 	}
 
 	void Update(){
-		if (Input.GetKeyDown (KeyCode.W)) {
+		if (Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.UpArrow)) {
 			W = true;
 		}
-		if (Input.GetKeyUp (KeyCode.W)) {
+		if (Input.GetKeyUp (KeyCode.W) || Input.GetKeyUp (KeyCode.UpArrow)) {
 			W = false;
 		}
 
-		if (Input.GetKeyDown (KeyCode.S)) {
+		if (Input.GetKeyDown (KeyCode.S) || Input.GetKeyDown (KeyCode.DownArrow)) {
 			S = true;
 		}
-		if (Input.GetKeyUp (KeyCode.S)) {
+		if (Input.GetKeyUp (KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)) {
 			S = false;
 		}
 
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (Input.GetKeyDown (KeyCode.A) || Input.GetKeyDown (KeyCode.LeftArrow)) {
 			A = true;
 		}
-		if (Input.GetKeyUp (KeyCode.A)) {
+		if (Input.GetKeyUp (KeyCode.A) || Input.GetKeyUp (KeyCode.LeftArrow)) {
 			A = false;
 		}
 
-		if (Input.GetKeyDown (KeyCode.D)) {
+		if (Input.GetKeyDown (KeyCode.D) || Input.GetKeyDown (KeyCode.RightArrow)) {
 			D = true;
 		}
-		if (Input.GetKeyUp (KeyCode.D)) {
+		if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.RightArrow)) {
 			D = false;
 		}
 
@@ -92,7 +92,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			mouseMove = false;
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
+		if ((Input.GetKeyDown (KeyCode.Space) || Input.GetMouseButtonUp (1)) && isGrounded) {
 			//Debug.Log ("get space down");
 			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
 			jumpSound.Play ();
@@ -126,7 +126,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			distance = Mathf.Sqrt (distance);
 
 			currentMousePosition = Input.mousePosition;
-			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.01f;
+			float horizonShift = - (currentMousePosition - beginMousePosition).x * sensitivity;
 
 			Vector3 tempCtoM;
 			tempCtoM.x = beginCharacterToMouse.x * Mathf.Cos (horizonShift) - beginCharacterToMouse.z * Mathf.Sin(horizonShift);

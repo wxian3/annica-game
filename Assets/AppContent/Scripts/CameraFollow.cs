@@ -5,13 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour {
 
-	Camera pcCamera;
-
-	public Transform target;
+	public GameObject Annica;
 	public float smoothing = 5f;
+	public float maxSpeed = 5f;        //max speed camera can move
 	//int floorMask;
 	//float camRayLength = 100f;
-	public float maxSpeed = 5f;        //max speed camera can move
 
 	private bool inAdjust;
 	private bool rinAdjust;
@@ -22,6 +20,9 @@ public class CameraFollow : MonoBehaviour {
 	private Vector3 offset;
 	//public Vector3 beginFlootHit;
 	//public Vector3 currentFlootHit;
+	private Transform target;
+	private Camera pcCamera;
+	private float sensitivity;
 
 
 	void Awake() {
@@ -29,6 +30,8 @@ public class CameraFollow : MonoBehaviour {
 		if (pcCamera != null) {
 			Debug.Log ("get pc camera!");
 		}
+		target = Annica.transform;
+		sensitivity = Annica.GetComponent<PlayerMovementPCtest>().sensitivity;
 		//floorMask = LayerMask.GetMask ("Floor");
 	}
 
@@ -80,7 +83,7 @@ public class CameraFollow : MonoBehaviour {
 			distance = Mathf.Sqrt (distance);
 
 			currentMousePosition = Input.mousePosition;
-			float horizonShift = - (currentMousePosition - beginMousePosition).x * 0.01f;
+			float horizonShift = - (currentMousePosition - beginMousePosition).x * sensitivity;
 
 			Vector3 tempCtoM;
 			tempCtoM.x = beginCharacterToMouse.x * Mathf.Cos (horizonShift) - beginCharacterToMouse.z * Mathf.Sin(horizonShift);
@@ -88,7 +91,7 @@ public class CameraFollow : MonoBehaviour {
 			tempCtoM.y = beginCharacterToMouse.y;
 
 			float XZ = Mathf.Sqrt (Mathf.Pow (tempCtoM.x, 2) + Mathf.Pow (tempCtoM.z, 2));// * Mathf.Sign (tempCtoM.x); 
-			float verticalShift = - (currentMousePosition - beginMousePosition).y * 0.005f;
+			float verticalShift = - (currentMousePosition - beginMousePosition).y * sensitivity * 0.75f;
 			if (verticalShift > (Mathf.Atan (XZ / tempCtoM.y) - Mathf.Acos (0.9f))) {
 				verticalShift = (Mathf.Atan (XZ / tempCtoM.y) - Mathf.Acos (0.9f));
 			} else if (verticalShift < 0f) {
@@ -118,7 +121,7 @@ public class CameraFollow : MonoBehaviour {
 		//Zoom out  
 		if (Input.GetAxis("Mouse ScrollWheel") <0)  
 		{  
-			if(pcCamera.fieldOfView<=150)  
+			if(pcCamera.fieldOfView<=100)  
 				pcCamera.fieldOfView +=2f;  
 			if(pcCamera.orthographicSize<=20)  
 				pcCamera.orthographicSize +=2F;  
