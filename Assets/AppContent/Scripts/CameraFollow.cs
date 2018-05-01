@@ -100,11 +100,11 @@ public class CameraFollow : MonoBehaviour {
 
 			float XZ = Mathf.Sqrt (Mathf.Pow (tempCtoM.x, 2) + Mathf.Pow (tempCtoM.z, 2));// * Mathf.Sign (tempCtoM.x); 
 			float verticalShift = - (currentMousePosition - beginMousePosition).y * sensitivity * 0.75f;
-			if (verticalShift > (Mathf.Atan (XZ / tempCtoM.y) - Mathf.Acos (0.9f))) {
-				verticalShift = (Mathf.Atan (XZ / tempCtoM.y) - Mathf.Acos (0.9f));
+			if (verticalShift > (Mathf.Atan (XZ / tempCtoM.y) - Mathf.Acos (0.99f))) {
+				verticalShift = (Mathf.Atan (XZ / tempCtoM.y) - Mathf.Acos (0.99f));
 			} else if (verticalShift < 0f) {
-				if (verticalShift < (Mathf.Atan(XZ / tempCtoM.y) - Mathf.Acos(0.001f))){
-					verticalShift = (Mathf.Atan(XZ / tempCtoM.y) - Mathf.Acos(0.001f));
+				if (verticalShift < (Mathf.Atan(XZ / tempCtoM.y) - Mathf.Acos(0.1f))){
+					verticalShift = (Mathf.Atan(XZ / tempCtoM.y) - Mathf.Acos(0.1f));
 				}
 			}
 
@@ -127,41 +127,47 @@ public class CameraFollow : MonoBehaviour {
 
 
 
+//
+//		//automatically zoom in part
+//		Vector3 wantedPosition = targetCamPos;
+//		bool frozen = false;
+//
+//		// check to see if there is anything behind the target
+//		RaycastHit hit;
+//		Vector3 back = transform.TransformDirection(offset); 
+//
+//		// cast the bumper ray out from rear and check to see if there is anything behind
+//		if (Physics.Raycast(target.position, back, out hit) && hit.transform != target) // ignore ray-casts that hit the user. DR
+//		{
+//			Vector3 vec1 = targetCamPos - target.position;
+//			Vector3 vec2 = hit.point - target.position;
+//			float len1squ = Mathf.Pow (vec1.x, 2) + Mathf.Pow (vec1.y, 2) + Mathf.Pow (vec1.z, 2);
+//			float len2squ = Mathf.Pow (vec2.x, 2) + Mathf.Pow (vec2.y, 2) + Mathf.Pow (vec2.z, 2);
+//			if (len1squ > len2squ) {
+//				// clamp wanted position to hit position
+//				//frozen = true;
+//				Debug.Log("camera hits something");
+//				Debug.Log ("long: " + vec1 + " short: " + vec2);
+//				wantedPosition.x = hit.point.x;
+//				wantedPosition.z = hit.point.z;
+//				wantedPosition.y = hit.point.y;
+//				wantedPosition.y = Mathf.Lerp(hit.point.y + bumperCameraHeight, wantedPosition.y, Time.deltaTime * smoothing);
+//			}
+//		} 
+//			
+//		//Debug.Log ("wanted: " + hit.point + ", origin: " + targetCamPos);
+//		//transform.position = Vector3.Lerp(transform.position, wantedPosition, smoothing * Time.deltaTime);
+//
+//
 
-		//automatically zoom in part
-		Vector3 wantedPosition = targetCamPos;
-
-		// check to see if there is anything behind the target
-		RaycastHit hit;
-		Vector3 back = transform.TransformDirection(offset); 
-
-		// cast the bumper ray out from rear and check to see if there is anything behind
-		if (Physics.Raycast(target.position, back, out hit) && hit.transform != target) // ignore ray-casts that hit the user. DR
-		{
-			Vector3 vec1 = targetCamPos - target.position;
-			Vector3 vec2 = hit.point - target.position;
-			float len1squ = Mathf.Pow (vec1.x, 2) + Mathf.Pow (vec1.y, 2) + Mathf.Pow (vec1.z, 2);
-			float len2squ = Mathf.Pow (vec2.x, 2) + Mathf.Pow (vec2.y, 2) + Mathf.Pow (vec2.z, 2);
-			if (len1squ > len2squ) {
-				// clamp wanted position to hit position
-				Debug.Log("camera hits something");
-				Debug.Log ("long: " + vec1 + " short: " + vec2);
-				wantedPosition.x = hit.point.x;
-				wantedPosition.z = hit.point.z;
-				wantedPosition.y = hit.point.y;
-				wantedPosition.y = Mathf.Lerp(hit.point.y + bumperCameraHeight, wantedPosition.y, Time.deltaTime * smoothing);
-			}
-		} 
-			
-		//Debug.Log ("wanted: " + hit.point + ", origin: " + targetCamPos);
-		transform.position = Vector3.Lerp(transform.position, wantedPosition, smoothing * Time.deltaTime);
 
 
+//		//without automatically zoom in, use this
+//		if (frozen == false) {
+//			
+//		}
 
-
-
-		//without automatically zoom in, use this
-		//transform.position = Vector3.Lerp (transform.position, targetCamPos, smoothing * Time.deltaTime);
+		transform.position = Vector3.Lerp (transform.position, targetCamPos, smoothing * Time.deltaTime);
 
 
 
@@ -181,7 +187,7 @@ public class CameraFollow : MonoBehaviour {
 		//Zoom in  
 		if (Input.GetAxis("Mouse ScrollWheel") > 0)  
 		{  
-			if(pcCamera.fieldOfView>2)  
+			if(pcCamera.fieldOfView>10)  
 				pcCamera.fieldOfView-=2f;  
 			if(pcCamera.orthographicSize>=1)  
 				pcCamera.orthographicSize-=2F;  
