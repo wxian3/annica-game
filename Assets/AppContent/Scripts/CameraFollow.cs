@@ -24,6 +24,14 @@ public class CameraFollow : MonoBehaviour {
 	private Camera pcCamera;
 	private float sensitivity;
 
+	//private float bumperDistanceCheck = 100f; // length of bumper ray
+	private float bumperCameraHeight = 1.0f; // adjust camera height while bumping
+	private Vector3 bumperRayOffset; // allows offset of the bumper ray from target origin
+	//private float damping = 5.0f;
+	//private float distance = 3.0f;
+	//private float height = 1.0f;
+
+
 
 	void Awake() {
 		pcCamera = GetComponent<Camera> ();
@@ -114,8 +122,52 @@ public class CameraFollow : MonoBehaviour {
 			transform.rotation = newRotation;
 
 		}
+
+
+
+
+
+
+		//automatically zoom in part
+		Vector3 wantedPosition = targetCamPos;
+
+		// check to see if there is anything behind the target
+		RaycastHit hit;
+		Vector3 back = transform.TransformDirection(offset); 
+
+		// cast the bumper ray out from rear and check to see if there is anything behind
+		if (Physics.Raycast(target.position, back, out hit) && hit.transform != target) // ignore ray-casts that hit the user. DR
+		{
+			Vector3 vec1 = targetCamPos - target.position;
+			Vector3 vec2 = hit.point - target.position;
+			float len1squ = Mathf.Pow (vec1.x, 2) + Mathf.Pow (vec1.y, 2) + Mathf.Pow (vec1.z, 2);
+			float len2squ = Mathf.Pow (vec2.x, 2) + Mathf.Pow (vec2.y, 2) + Mathf.Pow (vec2.z, 2);
+			if (len1squ > len2squ) {
+				// clamp wanted position to hit position
+				Debug.Log("camera hits something");
+				Debug.Log ("long: " + vec1 + " short: " + vec2);
+				wantedPosition.x = hit.point.x;
+				wantedPosition.z = hit.point.z;
+				wantedPosition.y = hit.point.y;
+				wantedPosition.y = Mathf.Lerp(hit.point.y + bumperCameraHeight, wantedPosition.y, Time.deltaTime * smoothing);
+			}
+		} 
 			
-		transform.position = Vector3.Lerp (transform.position, targetCamPos, smoothing * Time.deltaTime);
+		//Debug.Log ("wanted: " + hit.point + ", origin: " + targetCamPos);
+		transform.position = Vector3.Lerp(transform.position, wantedPosition, smoothing * Time.deltaTime);
+
+
+
+
+
+		//without automatically zoom in, use this
+		//transform.position = Vector3.Lerp (transform.position, targetCamPos, smoothing * Time.deltaTime);
+
+
+
+
+
+
 
 
 		//Zoom out  
