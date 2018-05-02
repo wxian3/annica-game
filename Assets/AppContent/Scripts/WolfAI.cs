@@ -41,13 +41,13 @@ public class WolfAI : MonoBehaviour {
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
 
-		if (agent == null)
-			Debug.Log("NavMeshAgent agent could not be found");
+		// if (agent == null)
+		// 	Debug.Log("NavMeshAgent agent could not be found");
 
 		anim = GetComponent<Animator>();
 
-		if (anim == null)
-			Debug.Log("Animator could not be found");
+		// if (anim == null)
+		// 	Debug.Log("Animator could not be found");
 		
 		audio = GetComponent<AudioSource> ();
 
@@ -132,7 +132,7 @@ public class WolfAI : MonoBehaviour {
 			//Destroy(collision.gameObject);
 			//GetComponent<AudioSource>().Play();
 			death = true;
-			Debug.Log("die of meeting wolf.");
+			// Debug.Log("die of meeting wolf.");
 		}
 	}
 }

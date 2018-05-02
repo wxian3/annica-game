@@ -36,7 +36,7 @@ public class CameraFollow : MonoBehaviour {
 	void Awake() {
 		pcCamera = GetComponent<Camera> ();
 		if (pcCamera != null) {
-			Debug.Log ("get pc camera!");
+			// Debug.Log ("get pc camera!");
 		}
 		target = Annica.transform;
 		sensitivity = Annica.GetComponent<PlayerMovementPCtest>().sensitivity;

@@ -10,7 +10,7 @@ public class Boat : MonoBehaviour {
 	}
 
 	public void Move () {
-		Debug.Log ("move");
+		// Debug.Log ("move");
 		// Rotate 90 degree first
 		moving = true;
 	}

@@ -22,7 +22,7 @@ public class Ground : MonoBehaviour {
 		if (collision.gameObject.name == "annica" && !death) {
 			//Destroy(collision.gameObject);
 			//GetComponent<AudioSource>().Play();
-			Debug.Log("die of falling down");
+			// Debug.Log("die of falling down");
 			death = true;
 		}
 		if (collision.gameObject.name == "Mask's tear(Clone)") {
