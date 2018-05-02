@@ -179,7 +179,7 @@ public class CameraFollow : MonoBehaviour {
 		//Zoom out  
 		if (Input.GetAxis("Mouse ScrollWheel") <0)  
 		{  
-			if(pcCamera.fieldOfView<=100)  
+			if(pcCamera.fieldOfView<=60)  
 				pcCamera.fieldOfView +=2f;  
 			if(pcCamera.orthographicSize<=20)  
 				pcCamera.orthographicSize +=2F;  
