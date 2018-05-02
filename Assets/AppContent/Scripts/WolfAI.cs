@@ -33,7 +33,7 @@ public class WolfAI : MonoBehaviour {
 	private float maxLookaheadTime = 2f;
 
 	public GameObject player;
-	public float minPDist = 10f;
+	private float minPDist = 5f;
 
 	AudioSource audio;
 
