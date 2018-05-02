@@ -99,7 +99,11 @@ Dialogue Canvas animation (with script)
 **Who Did What:**
 
 Yuxin Zheng: character control and animation, NPC/AI interaction
+
 Wenqi Xian: management of the main scene, 3D models and animation of building and character, environment interaction (rotating bridge, drivable boat), audio.
+
 Wenjie Yao: character & camera control, environment interaction(NPC-Butterfly, Crying Mask, disappearing wood block), physical simulation
-Arsene Lakpa: UI Design,
+
+Arsene Lakpa: UI Canvas Design, NPC Chat Box Design
+
 Danny Zhang: implemented colliders onto the entire map, game environment/map design and implementation, cloud jumping minigame, Annica’s death logic, Canvas UI integration
