@@ -97,6 +97,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
 			jumpSound.Play ();
 			isGrounded = false;
+			speed = 2f;
 			//Debug.Log ("jump");
 		}
 	}
@@ -197,6 +198,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 		if (other.gameObject.layer == 11)
 		{
 			isGrounded = true;
+			speed = 4f;
 			//Debug.Log ("is Grounded");
 		}
 	}
