@@ -4,9 +4,11 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class PlayerMovementPCtest : MonoBehaviour
 {
-	public float speed = 4f;
+	public float OnGroundSpeed = 4f;
+	public float OnJumpSpeed = 2f;
 	public float sensitivity = 0.007f;
 
+	private float speed;
 	public Transform pcCamera;
 	public bool isGrounded;
 	Vector3 movement;
@@ -39,6 +41,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 		//anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
 		anim = GetComponent <Animator> ();
+		speed = OnGroundSpeed;
 	}
 
 	void Start() {
@@ -97,7 +100,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 			playerRigidbody.AddForce (new Vector3 (0f, 330f, 0f));
 			jumpSound.Play ();
 			isGrounded = false;
-			speed = 2f;
+			speed = OnJumpSpeed;
 			//Debug.Log ("jump");
 		}
 	}
@@ -198,7 +201,7 @@ public class PlayerMovementPCtest : MonoBehaviour
 		if (other.gameObject.layer == 11)
 		{
 			isGrounded = true;
-			speed = 4f;
+			speed = OnGroundSpeed;
 			//Debug.Log ("is Grounded");
 		}
 	}
