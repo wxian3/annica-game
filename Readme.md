@@ -12,7 +12,7 @@ Arsene Lakpa | alakpa3@gatech.edu | alakpa3
 Danny Zhang | danny.zhang@gatech.edu | dzhang314
 
 **Objective:** Annica’s world is an exploration puzzle game. The game is won by exploring the level and collecting all of the diamonds. You lose if you fall into the water or if you are caught by the wolf guardian.
-**Scene to Open:** Assets/AppContent/Scenes/StartScene.unity
+**Scene to Open:** Assets/AppContent/Scenes/StartScene.unity and Assets/AppContent/Scenes/AlphaDemo.unity
 **Scenes to Build:** Assets/AppContent/Scenes/StartScene.unity and Assets/AppContent/Scenes/AlphaDemo.unity
 
 Github repo: https://github.com/wxian3/annica-game
