@@ -2,9 +2,13 @@
 
 #### Team Members:
 Yuxin Zheng | yzheng347@gatech.edu | yzheng347
+
 Wenqi Xian | wxian3@gatech.edu | wxian3
+
 Wenjie Yao | wenjie@gatech.edu | wyao48
+
 Arsene Lakpa | alakpa3@gatech.edu | alakpa3
+
 Danny Zhang | danny.zhang@gatech.edu | dzhang314
 
 **Objective:** Annica’s world is an exploration puzzle game. The game is won by exploring the level and collecting all of the diamonds. You lose if you fall into the water or if you are caught by the wolf guardian.
