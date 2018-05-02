@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(AudioSource))]
 
 public class WolfAI : MonoBehaviour {
 	public GameObject[] waypoints;
@@ -15,9 +15,9 @@ public class WolfAI : MonoBehaviour {
 	private Animator anim;
 
 	private int currWaypoint = -1;
-	public float timmer = 0.0f;
+	private float timer = 0.0f;
 	private float sitTime = 7.0f;
-	public float idleTime = 13.0f;
+	private float idleTime = 13.0f;
 
 	public Image gameOverImage;
     bool death = false;
@@ -25,11 +25,17 @@ public class WolfAI : MonoBehaviour {
 	public enum AIState {
 		Patrol,
 		Sit,
-		Idle
+		Idle,
+		Angry
 	};
 
 	public AIState aiState;
-	public float maxLookaheadTime = 2f;
+	private float maxLookaheadTime = 2f;
+
+	public GameObject player;
+	public float minPDist = 10f;
+
+	AudioSource audio;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +48,9 @@ public class WolfAI : MonoBehaviour {
 
 		if (anim == null)
 			Debug.Log("Animator could not be found");
+		
+		audio = GetComponent<AudioSource> ();
+
 		anim.SetBool("satisfied", false);
 		aiState = AIState.Idle;
 	}
@@ -54,6 +63,16 @@ public class WolfAI : MonoBehaviour {
             gameOverImage.gameObject.SetActive(true);
         }
 
+		var dist = Vector3.Distance(this.transform.position, player.transform.position);
+		if (dist < minPDist) {
+
+			aiState = AIState.Angry;
+			anim.SetBool("playerSeen", true);
+			agent.Stop ();
+			audio.Play ();
+			this.transform.LookAt (player.transform);
+		}
+
 		switch (aiState) {
 		case AIState.Patrol:
 			if (agent.remainingDistance < minDist) {
@@ -62,29 +81,37 @@ public class WolfAI : MonoBehaviour {
 			}
 			break;
 		case AIState.Sit:
-			if (timmer >= sitTime) {
+			if (timer >= sitTime) {
 				anim.SetBool("satisfied", false);
 				aiState = AIState.Patrol;
 				setNextWaypoint ();
 			} else {
-				timmer += Time.deltaTime;
+				timer += Time.deltaTime;
 			}
 			break;
 		case AIState.Idle:
-			if (timmer >= idleTime) {
+			if (timer >= idleTime) {
 				anim.SetTrigger ("start");
 				aiState = AIState.Patrol;
 				setNextWaypoint ();
 			} else {
-				timmer += Time.deltaTime;
+				timer += Time.deltaTime;
 			}
+			break;
+		case AIState.Angry:
+			if (dist >= minPDist) {
+				anim.SetBool ("playerSeen", false);
+				aiState = AIState.Patrol;
+				anim.SetBool("satisfied", false);
+				agent.Resume ();
+			} 
 			break;
 		}
 	}
 
 	void sit() {
 		anim.SetBool("satisfied", true);
-		timmer = 0;
+		timer = 0;
 	}
 
 	void setNextWaypoint() {
